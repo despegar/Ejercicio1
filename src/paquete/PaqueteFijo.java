@@ -1,9 +1,9 @@
 package paquete;
 
-public class PaqueteSaldo implements Paquetes {
+public class PaqueteFijo implements Paquetes {
 
-	public PaqueteSaldo() {
-		
+	public PaqueteFijo(double precioBase) {
+		this.precioBase = precioBase;
 	}
 
 	private double precioBase;
@@ -13,8 +13,8 @@ public class PaqueteSaldo implements Paquetes {
 		return this.precioBase;
 	}
 
-	public void setPrecioBase(Clientes cliente) {
-		this.precioBase = cliente.getSaldo() * 0.1;
+	public void setPrecioBase(double precioBase) {
+		this.precioBase = precioBase;
 	}
 
 	@Override

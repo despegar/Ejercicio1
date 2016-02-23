@@ -6,6 +6,13 @@ public class Clientes {
 	private double saldo;
 	private double impuesto;
 	
+	public Clientes(String nombre, double saldo, double impuesto){
+		this.nombre = nombre;
+		this.saldo = saldo;
+		this.impuesto = impuesto;
+		
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}	
@@ -28,6 +35,15 @@ public class Clientes {
 
 	public void setImpuesto(double impuesto) {
 		this.impuesto = impuesto;
+	}
+	
+	public double comprarPaquete(PaqueteTuristico paquete){
+		if(this.saldo > paquete.getPrecioFinal(this.impuesto))
+		{
+			this.saldo -= paquete.getPrecioFinal(this.impuesto);
+		}
+		return paquete.getPrecioFinal(this.impuesto);
+		
 	}
 
 	
