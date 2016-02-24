@@ -38,6 +38,10 @@ public class Clientes {
 	}
 	
 	public double comprarPaquete(PaqueteTuristico paquete){
+		if(paquete.getPaquete().getClass() == PaqueteSaldo.class)
+		{
+			paquete.setPrecioBase(this.saldo * 0.1);
+		}
 		if(this.saldo > paquete.getPrecioFinal(this.impuesto))
 		{
 			this.saldo -= paquete.getPrecioFinal(this.impuesto);
