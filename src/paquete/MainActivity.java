@@ -3,7 +3,7 @@ package paquete;
 public class MainActivity {
 	public static void main(String args[])
 	{
-		Clientes cliente1 = new Clientes("juan", 2000, 1.3);
+		Clientes cliente1 = new Clientes("juan", 2000, 1.1);
 		Paquetes paquetehabitaciones = new PaqueteHabitaciones(50, 2);
 		Paquetes paquetefijo = new PaqueteFijo(200);
 		Paquetes paquetesaldo = new PaqueteSaldo();
