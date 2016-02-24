@@ -1,6 +1,8 @@
 package paquete;
 
 public class MainActivity {
+	public static PaqueteTuristico paquetemascaro;
+	public static double preciomascaro = 0;
 	public static void main(String args[])
 	{
 		Clientes cliente1 = new Clientes("juan", 2000);
@@ -11,10 +13,21 @@ public class MainActivity {
 		PaqueteTuristico paquete1 = new PaqueteTuristico(paquetefijo);
 		PaqueteTuristico paquete2 = new PaqueteTuristico(paquetehabitaciones);
 
-		cliente1.comprarPaquete(paquete1);
+		double precio = cliente1.comprarPaquete(paquete1);
+		
+		if(precio > preciomascaro){
+			preciomascaro = precio;
+			paquetemascaro = paquete1;
+		}
 		cliente1.comprarPaquete(paquete2);
+		System.out.println(preciomascaro + "");
 		System.out.println(cliente1.getSaldo() + "");		
 		System.out.println(cliente1.getListaPaquetesComprados().size());	
-		System.out.println(cliente1.getGastosTotales());		
+		System.out.println(cliente1.getGastosTotales());	
+		
+	}
+	
+	public void validarsieselmascaro(){
+		
 	}
 }

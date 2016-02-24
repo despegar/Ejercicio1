@@ -2,12 +2,17 @@ package paquete;
 
 import java.util.ArrayList;
 
+import javax.activity.ActivityCompletedException;
+
+import paquete.MainActivity;
+
 public class Clientes {
 	
 	private ArrayList<PaqueteTuristico> listaPaquetesComprados = new ArrayList<PaqueteTuristico>();	
 	private String nombre;
 	private double saldo;
-	private int gastosTotales = 0;
+	private double gastosTotales = 0;
+	
 	
 	public Clientes(String nombre, double saldo){
 		this.nombre = nombre;
@@ -41,7 +46,16 @@ public class Clientes {
 			this.saldo -= paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
 			this.gastosTotales += paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
 			this.listaPaquetesComprados.add(paquete);
+			
 		}
+		MainActivity actividad = new MainActivity();
+		if(actividad.preciomascaro < paquete.getPrecioFinal(paquete.getPaquete().getImpuesto()))
+		{
+			actividad.paquetemascaro = paquete;
+			actividad.preciomascaro = paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
+		}
+		
+		
 		return paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
 		
 	}
@@ -50,7 +64,7 @@ public class Clientes {
 		return listaPaquetesComprados;
 	}
 
-	public int getGastosTotales() {
+	public double getGastosTotales() {
 		return gastosTotales;
 	}
 
