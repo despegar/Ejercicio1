@@ -6,15 +6,15 @@ import javax.activity.ActivityCompletedException;
 
 import paquete.MainActivity;
 
-public class Clientes {
+public class Individuo implements Cliente{
 	
-	private ArrayList<PaqueteTuristico> listaPaquetesComprados = new ArrayList<PaqueteTuristico>();	
+	private ArrayList<PaqueteTuristico> listaPaquetesomprados = new ArrayList<PaqueteTuristico>();	
 	private String nombre;
 	private double saldo;
 	private double gastosTotales = 0;
 	
 	
-	public Clientes(String nombre, double saldo){
+	public Individuo(String nombre, double saldo){
 		this.nombre = nombre;
 		this.saldo = saldo;
 		
@@ -45,7 +45,7 @@ public class Clientes {
 		{
 			this.saldo -= paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
 			this.gastosTotales += paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
-			this.listaPaquetesComprados.add(paquete);
+			this.getListaPaquetesComprados().add(paquete);
 			
 		}
 		MainActivity actividad = new MainActivity();
@@ -61,7 +61,7 @@ public class Clientes {
 	}
 	
 	public ArrayList<PaqueteTuristico> getListaPaquetesComprados() {
-		return listaPaquetesComprados;
+		return getListaPaquetesComprados();
 	}
 
 	public double getGastosTotales() {

@@ -5,7 +5,7 @@ public class MainActivity {
 	public static double preciomascaro = 0;
 	public static void main(String args[])
 	{
-		Clientes cliente1 = new Clientes("juan", 2000);
+		Individuo cliente1 = new Cliente("juan", 2000);
 		Paquetes paquetehabitaciones = new PaqueteHabitaciones(50, 2, 1.2);
 		Paquetes paquetefijo = new PaqueteFijo(500, 1.25);
 		Paquetes paquetesaldo = new PaqueteSaldo(1.1);
