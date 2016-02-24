@@ -1,15 +1,17 @@
 package paquete;
 
+import java.util.ArrayList;
+
 public class Clientes {
 	
+	private ArrayList<PaqueteTuristico> listaPaquetesComprados = new ArrayList<PaqueteTuristico>();	
 	private String nombre;
 	private double saldo;
-	private double impuesto;
+	private int gastosTotales = 0;
 	
-	public Clientes(String nombre, double saldo, double impuesto){
+	public Clientes(String nombre, double saldo){
 		this.nombre = nombre;
 		this.saldo = saldo;
-		this.impuesto = impuesto;
 		
 	}
 	
@@ -28,27 +30,30 @@ public class Clientes {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
-
-	public double getImpuesto() {
-		return impuesto;
-	}
-
-	public void setImpuesto(double impuesto) {
-		this.impuesto = impuesto;
-	}
 	
 	public double comprarPaquete(PaqueteTuristico paquete){
 		if(paquete.getPaquete().getClass() == PaqueteSaldo.class)
 		{
 			paquete.setPrecioBase(this.saldo * 0.1);
 		}
-		if(this.saldo > paquete.getPrecioFinal(this.impuesto))
+		if(this.saldo > paquete.getPrecioFinal(paquete.getPaquete().getImpuesto()))
 		{
-			this.saldo -= paquete.getPrecioFinal(this.impuesto);
+			this.saldo -= paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
+			this.gastosTotales += paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
+			this.listaPaquetesComprados.add(paquete);
 		}
-		return paquete.getPrecioFinal(this.impuesto);
+		return paquete.getPrecioFinal(paquete.getPaquete().getImpuesto());
 		
 	}
+	
+	public ArrayList<PaqueteTuristico> getListaPaquetesComprados() {
+		return listaPaquetesComprados;
+	}
+
+	public int getGastosTotales() {
+		return gastosTotales;
+	}
+
 
 	
 	
